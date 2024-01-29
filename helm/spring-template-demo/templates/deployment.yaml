@@ -70,19 +70,18 @@ spec:
                 key: kafka.schema_registry_servers
 
           
-          {{- with .Values.kafkaSecretName }}                  
           ##############################
           # KAFKA SECRETS #
           ##############################
           - name: CLUSTER_API_KEY
             valueFrom:
               secretKeyRef:
-                name: {{ . }}
+                name: demo-secret
                 key: CLUSTER_API_KEY
           - name: CLUSTER_API_SECRET
             valueFrom:
               secretKeyRef:
-                name: {{ . }}
+                name: demo-secret
                 key: CLUSTER_API_SECRET
           - name: SR_API_KEY
             valueFrom:
@@ -92,6 +91,5 @@ spec:
           - name: SR_API_SECRET
             valueFrom:
               secretKeyRef:
-                name: {{ . }}
+                name: demo-secret
                 key: SR_API_SECRET
-          {{ end }}

@@ -1,7 +1,7 @@
-namespace: improving
+namespace: demo
 image:
   pullPolicy: IfNotPresent
-  name: improving-java-kafka-demo
+  name: spring-template-demo
   tag: latest
 resources:
   limits:
@@ -14,9 +14,9 @@ service:
   enabled: enabled
   externalPort: 8080
   internalPort: 8080
-  name: improving-java-kafka-demo
+  name: spring-template-demo
   type: ClusterIP
-
-## the secret name holding the credentials for authenticating against
-#    a kafka environment (brokers and schema registry)
-kafkaSecretName:
+data:
+  spring.profiles.active: local
+  kafka.bootstrap_servers: host.docker.internal:19093,host.docker.internal:29093,host.docker.internal:39093
+  kafka.schema_registry_servers: http://host.docker.internal:8081
